@@ -1,0 +1,22 @@
+{
+  "name": "laravel-quicktask",
+  "description": "",
+  "main": "",
+  "authors": [
+    "locpt-0253 <pham.tien.loc@sun-asterisk.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/locpt-0253/laravel-quicktask",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "template-bower-example": "manhtd-1083/template-bower-example",
+    "light-bootstrap-dashboard": "creativetimofficial/light-bootstrap-dashboard",
+    "laravel-listview": "nterms/laravel-listview#^0.1.0"
+  }
+}
