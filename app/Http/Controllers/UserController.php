@@ -9,7 +9,9 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        //
+        return view('user.index', [
+            'users' => User::all(),
+        ]);
     }
 
     public function create()
@@ -24,7 +26,9 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        //
+        return view('user.show', [
+            'user' => $user,
+        ]);
     }
 
     public function edit(User $user)
