@@ -10,23 +10,28 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex flex-col items-start">
                     <div>
-                        {{ __('First name: :first_name', ['first_name' => $user->first_name]) }}
+                        {{ __('First name') }} : {{ $user->first_name }}
                     </div>
                     <div>
-                        {{ __('Last name: :last_name', ['last_name' => $user->last_name]) }}
+                        {{ __('Last name') }} : {{ $user->last_name }}
                     </div>
                     <div>
-                        {{ __('Username: :username', ['username' => $user->username]) }}
+                        {{ __('Username') }} : {{ $user->username }}
                     </div>
                     <div>
-                        {{ __('Created at: :created_at', ['created_at' => $user->created_at]) }}
+                        {{ __('Email') }} : {{ $user->email }}
+                    </div>
+                    <div>
+                        {{ __('Time created') }} : {{ $user->created_at }}
                     </div>
                 </div>
             </div>
             <div class="wrapper">
-                <x-primary-button class="my-4 float-right">
-                    {{ __('Create new :resource', ['resource' => 'post']) }}
-                </x-primary-button>
+                <a href="{{ route('posts.create', ['user' => $user->id]) }}">
+                    <x-primary-button class="my-4 float-right">
+                        {{ __('Create new :resource', ['resource' => 'post']) }}
+                    </x-primary-button>
+                </a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -43,15 +48,25 @@
                                 <td class="text-gray-900 dark:text-gray-100 text-center">{{ $post->content }}</td>
                                 <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->created_at }}</td>
                                 <td class="text-gray-900 dark:text-gray-100 text-center">
-                                    <x-primary-button class="mt-4" onclick="window.location.href='{{ route('users.show', ['user' => $user]) }}'">
-                                        {{ __('View') }}
-                                    </x-primary-button>
-                                    <x-primary-button class="mt-4" onclick="window.location.href='{{ route('users.edit', ['user' => $user]) }}'">
-                                        {{ __('Edit') }}
-                                    </x-primary-button>
-                                    <x-primary-button class="mt-4" onclick="window.location.href='{{ route('users.destroy', ['user' => $user]) }}'">
-                                        {{ __('Delete') }}
-                                    </x-primary-button>
+                                    <a href="{{ route('posts.show', ['post' => $post]) }}">
+                                        <x-primary-button class="mt-2">
+                                            {{ __('View') }}
+                                        </x-primary-button>
+                                    </a>
+
+                                    <a href="{{ route('posts.edit', ['post' => $post]) }}">
+                                        <x-primary-button class="mt-2">
+                                            {{ __('Edit') }}
+                                        </x-primary-button>
+                                    </a>
+
+                                    <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-primary-button class="mt-2">
+                                            {{ __('Delete') }}
+                                        </x-primary-button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

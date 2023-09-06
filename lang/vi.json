@@ -75,9 +75,13 @@
     "User Detail": "Chi tiết người dùng",
     "Action": "Hành động",
     "Create new :resource": "Tạo :resource mới",
+    "Update :resource": "Cập nhật :resource",
     "View": "Xem",
     "Edit": "Sửa",
     "Delete": "Xóa",
     "Content": "Nội dung",
-    "Time created": "Thời gian tạo"
+    "Time created": "Thời gian tạo",
+    "Username": "Tên tài khoản",
+    "First name": "Tên riêng",
+    "Last name": "Tên họ"
 }
