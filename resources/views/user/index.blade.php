@@ -8,9 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="wrapper">
-                <x-primary-button class="my-4 float-right">
-                    {{ __('Create new :resource', ['resource' => 'user']) }}
-                </x-primary-button>
+                <a href="{{ route('users.create') }}">
+                    <x-primary-button class="my-4 float-right">
+                        {{ __('Create new :resource', ['resource' => 'user']) }}
+                    </x-primary-button>
+                </a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -27,15 +29,27 @@
                                 <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->full_name }}</td>
                                 <td class="text-gray-900 dark:text-gray-100 text-center">{{ $user->username }}</td>
                                 <td class="text-gray-900 dark:text-gray-100 text-center">
-                                    <x-primary-button class="mt-4 mx-2" onclick="window.location.href='{{ route('users.show', ['user' => $user]) }}'">
-                                        {{ __('View') }}
-                                    </x-primary-button>
-                                    <x-primary-button class="mt-4 mx-2" onclick="window.location.href='{{ route('users.edit', ['user' => $user]) }}'">
-                                        {{ __('Edit') }}
-                                    </x-primary-button>
-                                    <x-primary-button class="mt-4 mx-2" onclick="window.location.href='{{ route('users.destroy', ['user' => $user]) }}'">
-                                        {{ __('Delete') }}
-                                    </x-primary-button>
+                                    <div class="flex flex-row justify-center">
+                                        <a href="{{ route('users.show', ['user' => $user]) }}">
+                                            <x-primary-button class="mt-2 mx-2">
+                                                {{ __('View') }}
+                                            </x-primary-button>
+                                        </a>
+                                        
+                                        <a href="{{ route('users.edit', ['user' => $user]) }}">
+                                            <x-primary-button class="mt-2 mx-2">
+                                                {{ __('Edit') }}
+                                            </x-primary-button>
+                                        </a>
+                                        
+                                        <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <x-primary-button class="mt-2 mx-2">
+                                                {{ __('Delete') }}
+                                            </x-primary-button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

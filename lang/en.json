@@ -75,9 +75,13 @@
     "User Detail": "User Detail",
     "Action": "Action",
     "Create new :resource": "Create new :resource",
+    "Update :resource": "Update :resource",
     "View": "View",
     "Edit": "Edit",
     "Delete": "Delete",
     "Content": "Content",
-    "Time created": "Time created"
+    "Time created": "Time created",
+    "Username": "Username",
+    "First name": "First name",
+    "Last name": "Last name"
 }
